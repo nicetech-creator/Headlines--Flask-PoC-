@@ -1,7 +1,22 @@
 <html>
     <head>
         <title>Headlines</title>
+        <style>
+            html {
+            font-family: "Helvetica";
+            background: white;
+            }           
+            body {
+            background: lightgrey;
+            max-width: 900px;
+            margin: 0 auto;
+            }
+            #header {
+            background: lightsteelblue;
+            }
+            </style>
     </head>
+    
     <body>
         <h1>Headlines</h1>
         <form>
@@ -14,16 +29,16 @@
         <h2>Currency</h2>
         <form>
             from: <select name="currency_from">
-            <option value="USD">USD</option>
-            <option value="GBP">GBP</option>
-            <option value="EUR">EUR</option>
-            <option value="ZAR">ZAR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="EUR">EUR</option>
+                <option value="ZAR">ZAR</option>
             </select>
             to: <select name="currency_to">
-            <option value="USD">USD</option>
-            <option value="GBP">GBP</option>
-            <option value="EUR">EUR</option>
-            <option value="ZAR">ZAR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="EUR">EUR</option>
+                <option value="ZAR">ZAR</option>
             </select>
             <input type="submit" value="Submit">
         </form>

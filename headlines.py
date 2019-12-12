@@ -4,7 +4,8 @@ from flask import render_template
 from flask import request
 import json
 import urllib
-
+import datetime
+from flask import make_response
 
 app = Flask(__name__)
 RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
@@ -39,7 +40,20 @@ def home():
     if not currency_to:
         currency_to = DEFAULTS['currency_to']
     rate = get_rate(currency_from, currency_to)
-    return render_template("home.html", articles=articles, weather=weather, currency_from=currency_from, currency_to=currency_to, rate=rate)
+    response = make_response(render_template("home.html",
+        articles=articles,
+        weather=weather,
+        currency_from=currency_from,
+        currency_to=currency_to,
+        rate=rate,
+        ))
+    expires = datetime.datetime.now() + datetime.timedelta(days=365)
+    response.set_cookie("publication", publication, expires=expires)
+    response.set_cookie("city", city, expires=expires)
+    response.set_cookie("currency_from",
+    currency_from, expires=expires)
+    response.set_cookie("currency_to", currency_to, expires=expires)
+    return response
 
 
 def get_news(query):
